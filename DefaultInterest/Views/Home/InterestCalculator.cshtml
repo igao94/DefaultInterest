@@ -1,0 +1,28 @@
+﻿@model DefaultInterest.Models.InterestRequest
+
+@{
+    ViewData["Title"] = "Interest Calculator";
+
+    var debt = Model?.Debt;
+
+    var fromDate = Model?.FromDate.ToString("yyyy-MM-dd") ?? string.Empty;
+
+    var toDate = Model?.ToDate.ToString("yyyy-MM-dd") ?? string.Empty;
+}
+
+<h2>Interest Calculator</h2>
+
+<form asp-action="CalculateInterest" method="post">
+    <label>Debt €</label>
+    <input class="form-control" type="number" name="Debt" placeholder="0" value="@debt" required />
+    <label class="mt-4">From date</label>
+    <input class="form-control" type="date" name="FromDate" value="@fromDate" required />
+    <label class="mt-4">To date</label>
+    <input class="form-control" type="date" name="ToDate" value="@toDate" required />
+    <button type="submit" class="btn btn-primary mt-4">Calculate</button>
+</form>
+
+@if (ViewBag.Interest is not null)
+{
+    <h3 class="mt-4">Total Interest: @string.Format("{0:N2}", ViewBag.Interest) €</h3>
+}
