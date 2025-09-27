@@ -16,7 +16,7 @@ public sealed class InterestCalculatorService(List<InterestRate> rates) : IInter
 
             if (periodStart > periodEnd)
             {
-                break;
+                continue;
             }
 
             var days = periodEnd.DayNumber - periodStart.DayNumber + 1;
