@@ -9,7 +9,7 @@ namespace DefaultInterest.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction(nameof(InterestCalculator));
         }
 
         public IActionResult InterestCalculator()
